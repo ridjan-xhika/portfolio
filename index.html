@@ -17,6 +17,90 @@
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); }
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
+    
+    /* Glowing text effect */
+    .glow-text {
+      text-shadow: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3); }
+      to { text-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(99, 102, 241, 0.5); }
+    }
+    
+    /* Card hover effects */
+    .card-gradient {
+      background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.9) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.3s ease;
+    }
+    .card-gradient:hover {
+      border-color: rgba(99, 102, 241, 0.6);
+      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+      transform: translateY(-5px);
+    }
+    
+    /* Terminal styling */
+    .terminal {
+      background: #1a1a1a;
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+      font-family: 'Courier New', monospace;
+    }
+    .terminal-header {
+      background: #2d2d2d;
+      padding: 8px 12px;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      align-items: center;
+    }
+    .terminal-btn { width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
+    .terminal-btn.red { background: #ff5f56; }
+    .terminal-btn.yellow { background: #ffbd2e; }
+    .terminal-btn.green { background: #27c93f; }
+    .terminal-body {
+      padding: 20px;
+      min-height: 300px;
+      color: #0f0;
+      overflow-y: auto;
+      max-height: 400px;
+    }
+    .terminal-line { margin-bottom: 8px; }
+    .terminal-prompt { color: #0f0; }
+    .terminal-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: #0f0;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .float-animation { animation: float 3s ease-in-out infinite; }
+    
+    /* Tech stack badges */
+    .tech-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      margin: 4px;
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .tech-badge:hover {
+      background: rgba(99, 102, 241, 0.4);
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-normal" data-aos-easing="ease-in-out" data-aos-duration="800">
@@ -28,22 +112,23 @@
     <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
       <a href="#home" class="text-2xl font-bold text-indigo-400 animate-pulse">Joker</a>
       <ul class="flex space-x-6">
-        <li><a href="#about" class="hover:text-indigo-300">About</a></li>
-        <li><a href="#skills" class="hover:text-indigo-300">Skills</a></li>
-        <li><a href="#projects" class="hover:text-indigo-300">Projects</a></li>
-        <li><a href="#ctf" class="hover:text-indigo-300">CTF</a></li>
-        <li><a href="#contact" class="hover:text-indigo-300">Contact</a></li>
+        <li><a href="#about" class="hover:text-indigo-300 transition">About</a></li>
+        <li><a href="#skills" class="hover:text-indigo-300 transition">Skills</a></li>
+        <li><a href="#projects" class="hover:text-indigo-300 transition">Projects</a></li>
+        <li><a href="#terminal" class="hover:text-indigo-300 transition">Terminal</a></li>
+        <li><a href="#ctf" class="hover:text-indigo-300 transition">CTF</a></li>
+        <li><a href="#contact" class="hover:text-indigo-300 transition">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="h-screen flex flex-col justify-center items-center text-center px-4" id="home">
-    <h1 class="text-5xl md:text-7xl font-extrabold mb-4" data-aos="fade-up">Hello, I'm Joker</h1>
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-4 glow-text" data-aos="fade-up">Hello, I'm Joker</h1>
     <p class="text-xl md:text-2xl mb-8 max-w-2xl" data-aos="fade-up" data-aos-delay="200">
       Epitech student & cybersecurity enthusiast. Crafting elegant, secure solutions in C, JS, and Python.
     </p>
-    <a href="#projects" class="px-6 py-3 bg-indigo-500 rounded-full text-white font-semibold hover:bg-indigo-400 transition" data-aos="fade-up" data-aos-delay="400">
+    <a href="#projects" class="px-6 py-3 bg-indigo-500 rounded-full text-white font-semibold hover:bg-indigo-400 transition transform hover:scale-110" data-aos="fade-up" data-aos-delay="400">
       See My Work
     </a>
   </header>
@@ -89,18 +174,78 @@
   <section id="projects" class="py-20 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl font-bold mb-12 text-center text-indigo-300" data-aos="fade-up">Featured Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Project Card 1 -->
-        <div class="bg-gray-700 rounded-2xl p-6 transform hover:scale-105 transition" data-aos="flip-left">
-          <h3 class="text-2xl font-semibold mb-2">Secure Messenger</h3>
-          <p class="mb-4">A Discord-inspired secure messaging app in development, built with React, Node.js, and cryptographic best practices.</p>
-          <a href="https://github.com/ridjan-xhika" class="text-indigo-300 font-medium">View Repository →</a>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card 1: AREA -->
+        <div class="card-gradient rounded-2xl p-6 transform hover:scale-105 transition" data-aos="flip-left">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">🔗</span>
+            <h3 class="text-2xl font-semibold">AREA</h3>
+          </div>
+          <p class="mb-4 text-gray-300">MERN stack automation platform inspired by IFTTT. Connect services with OAuth, create action-reaction workflows, and automate your digital life.</p>
+          <div class="mb-4 flex flex-wrap">
+            <span class="tech-badge">MongoDB</span>
+            <span class="tech-badge">Express</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">OAuth 2.0</span>
+          </div>
+          <a href="https://github.com/ridjan-xhika" class="text-indigo-300 font-medium hover:text-indigo-200">View Repository →</a>
         </div>
-        <!-- Project Card 2 -->
-        <div class="bg-gray-700 rounded-2xl p-6 transform hover:scale-105 transition" data-aos="flip-right">
-          <h3 class="text-2xl font-semibold mb-2">V.I.S.A.G.E Scanner</h3>
-          <p class="mb-4">Python-based vulnerability scanner for web applications, integrating OWASP testing modules and custom exploits.</p>
-          <a href="https://github.com/ridjan-xhika/V.I.S.A.G.E" class="text-indigo-300 font-medium">View Repository →</a>
+        <!-- Project Card 2: Secure Messenger -->
+        <div class="card-gradient rounded-2xl p-6 transform hover:scale-105 transition" data-aos="flip-up">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">🔐</span>
+            <h3 class="text-2xl font-semibold">Secure Messenger</h3>
+          </div>
+          <p class="mb-4 text-gray-300">Discord-inspired secure messaging app with end-to-end encryption, built with React, Node.js, and cryptographic best practices.</p>
+          <div class="mb-4 flex flex-wrap">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">WebSockets</span>
+            <span class="tech-badge">Crypto</span>
+          </div>
+          <a href="https://github.com/ridjan-xhika" class="text-indigo-300 font-medium hover:text-indigo-200">View Repository →</a>
+        </div>
+        <!-- Project Card 3: V.I.S.A.G.E Scanner -->
+        <div class="card-gradient rounded-2xl p-6 transform hover:scale-105 transition" data-aos="flip-right">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">🛡️</span>
+            <h3 class="text-2xl font-semibold">V.I.S.A.G.E Scanner</h3>
+          </div>
+          <p class="mb-4 text-gray-300">Python-based vulnerability scanner for web applications, integrating OWASP testing modules and custom exploits for comprehensive security audits.</p>
+          <div class="mb-4 flex flex-wrap">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">OWASP</span>
+            <span class="tech-badge">Security</span>
+          </div>
+          <a href="https://github.com/ridjan-xhika/V.I.S.A.G.E" class="text-indigo-300 font-medium hover:text-indigo-200">View Repository →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Terminal Section -->
+  <section id="terminal" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+      <h2 class="text-4xl font-bold mb-8 text-center text-indigo-300">Interactive Terminal</h2>
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-btn red"></span>
+          <span class="terminal-btn yellow"></span>
+          <span class="terminal-btn green"></span>
+          <span class="ml-4 text-gray-400 text-sm">joker@portfolio:~</span>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+          <div class="terminal-line">
+            <span class="text-gray-400">Welcome to Joker's Interactive Terminal</span>
+          </div>
+          <div class="terminal-line">
+            <span class="text-gray-400">Type 'help' for available commands</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prompt">joker@portfolio:~$</span>
+            <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-green-400 ml-2 w-full" autofocus>
+          </div>
         </div>
       </div>
     </div>
@@ -149,6 +294,152 @@
     particlesJS('particles-js', {
       particles: { number:{ value:80, density:{ enable:true, value_area:800 } }, color:{ value:'#ffffff' }, shape:{ type:'circle' }, opacity:{ value:0.5 }, size:{ value:3 }, move:{ enable:true, speed:2 } },
       interactivity:{ detect_on:'canvas', events:{ onhover:{ enable:true, mode:'grab' }, onclick:{ enable:true, mode:'push' } }, modes:{ grab:{ distance:200, line_linked:{ opacity:0.5 } }, push:{ particles_nb:4 } } }, retina_detect:true
+    });
+
+    /* Terminal functionality */
+    const terminalOutput = document.getElementById('terminal-output');
+    const terminalInput = document.getElementById('terminal-input');
+
+    const commands = {
+      help: () => `Available commands:
+  - whoami     : Display information about Joker
+  - skills     : Show technical skills
+  - projects   : List featured projects
+  - contact    : Show contact information
+  - clear      : Clear terminal
+  - help       : Show this help message`,
+      
+      whoami: () => `
+╔═══════════════════════════════════════════════════════════════╗
+║                         JOKER PROFILE                         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Name:        Joker (Ridjan Xhika)
+Role:        Epitech Student & Cybersecurity Enthusiast
+Location:    Currently debugging the matrix 🌐
+
+Education:   Epitech - Master of Software Engineering
+Passion:     Low-level C programming, Web Security, CTF Challenges
+
+Expertise:
+  • Systems Programming (C, Memory Management, Kernel-level)
+  • Web Development (MERN Stack, React, Node.js)
+  • Cybersecurity (OWASP, Penetration Testing, OSINT)
+  • DevOps & Automation (CI/CD, Docker, OAuth 2.0)
+
+Teams:
+  • OwlSec CTF Team - Active Member
+  • VoidSec CTF Team - Team Leader
+
+Philosophy: "Code is poetry, security is art, and debugging at 3 AM 
+            is my meditation."
+
+Current Mission: Contributing to open-source security projects and
+                building secure, scalable applications.`,
+      
+      skills: () => `
+Technical Skills:
+├── Programming Languages
+│   ├── C/C++ (Advanced)
+│   ├── JavaScript/TypeScript (Advanced)
+│   ├── Python (Advanced)
+│   └── Shell Scripting
+├── Web Development
+│   ├── React.js & Node.js
+│   ├── MongoDB & Express
+│   ├── OAuth 2.0 Integration
+│   └── WebSockets & Real-time Apps
+├── Security Tools
+│   ├── Burp Suite
+│   ├── Metasploit
+│   ├── OWASP Testing Tools
+│   └── Custom Exploit Development
+└── Recon & OSINT
+    ├── Shodan, Maltego
+    ├── theHarvester, Recon-ng
+    └── FOCA, SpiderFoot`,
+      
+      projects: () => `
+Featured Projects:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. AREA - Action REAction Automation Platform
+   Stack: MongoDB, Express, React, Node.js
+   Features: OAuth 2.0 integration, IFTTT-like automation,
+            Service connections, Workflow automation
+   Status: Production Ready ✓
+
+2. Secure Messenger
+   Stack: React, Node.js, WebSockets, Cryptography
+   Features: End-to-end encryption, Real-time messaging,
+            Discord-inspired UI
+   Status: In Development 🚧
+
+3. V.I.S.A.G.E Scanner
+   Stack: Python, OWASP Libraries
+   Features: Web vulnerability scanning, Custom exploits,
+            Comprehensive security audits
+   Status: Active Maintenance ⚡
+
+View all projects: github.com/ridjan-xhika`,
+      
+      contact: () => `
+Contact Information:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📧 Email:    joker4life@duck.com
+🔗 LinkedIn: linkedin.com/in/ridjan-xhika-8a0a312ab/
+🐦 Twitter:  x.com/joker4re
+💻 GitHub:   github.com/ridjan-xhika
+
+I'm open to collaborations, mentorship opportunities,
+and fun cybersecurity challenges. Let's connect!`,
+      
+      clear: () => 'CLEAR'
+    };
+
+    terminalInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const command = this.value.trim().toLowerCase();
+        
+        // Remove input line
+        const inputLine = this.closest('.terminal-line');
+        inputLine.remove();
+        
+        // Add command to output
+        const cmdLine = document.createElement('div');
+        cmdLine.className = 'terminal-line';
+        cmdLine.innerHTML = `<span class="terminal-prompt">joker@portfolio:~$</span> <span class="text-green-400">${command}</span>`;
+        terminalOutput.appendChild(cmdLine);
+        
+        // Execute command
+        if (command in commands) {
+          const result = commands[command]();
+          if (result === 'CLEAR') {
+            terminalOutput.innerHTML = '';
+          } else {
+            const output = document.createElement('div');
+            output.className = 'terminal-line text-gray-300';
+            output.style.whiteSpace = 'pre-wrap';
+            output.textContent = result;
+            terminalOutput.appendChild(output);
+          }
+        } else if (command) {
+          const error = document.createElement('div');
+          error.className = 'terminal-line text-red-400';
+          error.textContent = `Command not found: ${command}. Type 'help' for available commands.`;
+          terminalOutput.appendChild(error);
+        }
+        
+        // Add new input line
+        const newInputLine = document.createElement('div');
+        newInputLine.className = 'terminal-line';
+        newInputLine.innerHTML = `<span class="terminal-prompt">joker@portfolio:~$</span> <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-green-400 ml-2 w-full" autofocus>`;
+        terminalOutput.appendChild(newInputLine);
+        
+        // Focus new input and scroll to bottom
+        const newInput = document.getElementById('terminal-input');
+        newInput.focus();
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      }
     });
   </script>
 </body>
